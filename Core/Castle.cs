@@ -14,12 +14,15 @@ namespace Architecture
         private readonly string _castleName;
         private readonly int _index;
 
-        public readonly int _roomLimit;
+        public readonly int _roomLimit = 10;
         public readonly List<Room> rooms;
         public IEnumerable<Room> Rooms
         {
             get { return rooms; }
         }
+        /// <summary>
+        /// Уровень сложности замка
+        /// </summary>
         public enum HardLevel
         {
             easy,
@@ -28,7 +31,30 @@ namespace Architecture
             hard,
             hardcore
         }
+        /// <summary>
+        /// Создает комнаты в замке
+        /// </summary>
+        public void CreateDefaultRooms()
+        {
+            for (var i = 0; i < _roomLimit; i++)
+            {
+                rooms.Add(new Room(300, 300, 10, i, Room.Type.BattleRoom));
+            }
 
+            for (var i = 0; i < _roomLimit; i += 2)
+            {
+                rooms.Add(new Room(300, 300, 10, i, Room.Type.TreasureRoom));
+            }
+        }
+        /// <summary>
+        /// Возвращает комнату по индексу
+        /// </summary>
+        /// <param name="index">Индекс комнаты</param>
+        /// <returns></returns>
+        public Room GetRoom(int index)
+        {
+            return rooms[index];
+        }
         public Castle(string castleName, int index, int roomLimit, List<Room> rooms)
         {
             _castleName = castleName;
