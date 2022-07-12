@@ -17,14 +17,17 @@ namespace Architecture
         public enum Type
         {
             BattleRoom,
-            TreasureRoom
+            TreasureRoom,
+            Empty
         }
         public int _index;
         public Type _type;
 
+        private Castle castle { get; set; }
+
         public Room(int height, int weight, int capacity, int index, Type type)
         {
-            if(height > 300 || weight > 300)
+            if (height > 300 || weight > 300)
             {
                 Console.WriteLine("Height or weight of room is out of range");
                 return;
@@ -33,7 +36,7 @@ namespace Architecture
             _weight = weight;
 
             _type = type;
-            if(type != 0)
+            if (type != 0)
             {
                 _capacity = 0;
             }
@@ -43,7 +46,6 @@ namespace Architecture
 
             }
             _index = index;
-            
         }
     }
 }

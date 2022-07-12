@@ -37,6 +37,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Castle.cs" />
+    <Compile Include="Command.cs" />
     <Compile Include="Core.cs" />
     <Compile Include="Room.cs" />
   </ItemGroup>
